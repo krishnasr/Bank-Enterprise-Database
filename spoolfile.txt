@@ -1,0 +1,170 @@
+mysql> SOURCE Bank_project2.sql;
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> SHOW TABLES;
++----------------------+
+| Tables_in_kxs0344    |
++----------------------+
+| Account              |
+| Borrower             |
+| Branch               |
+| COUNTRY              |
+| Checking_acc         |
+| Customer             |
+| Depname              |
+| Depositor            |
+| Employee             |
+| Loan                 |
+| MATCH_RESULTS        |
+| PLAYERS              |
+| PLAYER_ASSISTS_GOALS |
+| PLAYER_CARDS         |
+| Payment              |
+| Savings_acc          |
+| TEAM_SUMMARY         |
+| TEAM_SUMMARY1        |
+| TEAM_SUMMARY2        |
+| TEAM_SUMMARY3        |
+| TEAM_SUMMARY5        |
+| TEAM_SUMMARY7        |
+| TEAM_SUMMARY8        |
++----------------------+
+23 rows in set (0.01 sec)
+
+mysql> DESC Branch;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Branch_name | varchar(20) | NO   | PRI | NULL    |       |
+| Branch_city | varchar(20) | YES  |     | NULL    |       |
+| Assests     | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> DESC Customer;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Cust_ssn    | int         | NO   | PRI | NULL    |       |
+| Cust_name   | varchar(20) | YES  |     | NULL    |       |
+| Cust_street | varchar(30) | YES  |     | NULL    |       |
+| Cust_city   | varchar(20) | YES  |     | NULL    |       |
+| Type        | varchar(15) | YES  |     | NULL    |       |
+| Emp_ssn     | int         | YES  | MUL | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> DESC Employee;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Emp_ssn       | int         | NO   | PRI | NULL    |       |
+| Emp_name      | varchar(20) | YES  |     | NULL    |       |
+| Emp_telephone | int         | YES  |     | NULL    |       |
+| Startdate     | date        | YES  |     | NULL    |       |
+| Emp_manag_ssn | int         | YES  | MUL | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> DESC Payment;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| Loan_no    | int           | NO   | PRI | NULL    |       |
+| Pay_no     | int           | NO   | PRI | NULL    |       |
+| Pay_date   | date          | YES  |     | NULL    |       |
+| Pay_amount | decimal(10,2) | YES  |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> DESC Loan;
++-------------+---------------+------+-----+---------+-------+
+| Field       | Type          | Null | Key | Default | Extra |
++-------------+---------------+------+-----+---------+-------+
+| Loan_no     | int           | NO   | PRI | NULL    |       |
+| Loan_amount | decimal(10,2) | YES  |     | NULL    |       |
+| Branch_name | varchar(20)   | YES  | MUL | NULL    |       |
++-------------+---------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> DESC Depositor;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| Account_no    | int  | NO   | PRI | NULL    |       |
+| Cust_ssn      | int  | NO   | PRI | NULL    |       |
+| Date_accessed | date | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> DESC Borrower;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| Loan_no  | int  | NO   | PRI | NULL    |       |
+| Cust_ssn | int  | NO   | PRI | NULL    |       |
++----------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> DESC Depname;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Emp_ssn     | int         | NO   | PRI | NULL    |       |
+| Emp_depname | varchar(20) | NO   | PRI | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> DESC Account;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| Account_no | int           | NO   | PRI | NULL    |       |
+| Balance    | decimal(10,2) | YES  |     | NULL    |       |
+| Deposit    | decimal(10,2) | YES  |     | NULL    |       |
+| Withdrawal | decimal(10,2) | YES  |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> DESC Savings_acc;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| Account_no    | int  | NO   | PRI | NULL    |       |
+| Interest_rate | int  | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> DESC Checking_acc;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Account_no | int         | NO   | PRI | NULL    |       |
+| Overdrafts | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> notee;
